@@ -1,0 +1,11 @@
+Typescript esta escrito con JavaScript pero TS agrega caracteristicas a JS por lo que se conoce como un superset de JS
+ya que todo lo que se haga con TS compila hacia JS puro
+
+TS soporta ecmascript 5, 6, sin embargo TS esta por encima de estas especificaciones ya que las mejora y hace mas simple el
+trabajo, TS surgio porque JS no esta programado para manejar aplicaciones de gran tamaño, fue creado por Microsoft.
+
+TS nos permite:
+-> Rapida detección de errores al momento de escribir codigo y no al ejecutarlo
+-> Facil analisis del codigo
+-> Lectura del codigo
+-> Facilita el trabajo de aplicaciones a gran escala
