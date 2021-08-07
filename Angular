@@ -1,0 +1,42 @@
+Angular es una plataforma para contruir y desarrollar aplicaciones web y mobiles, es un framework desarrollado por google
+Angular utiliza como parte de su desarrollo el lenguaje de TypeScript
+
+Es un framework de JavaScript que nos permite crear aplicaciones conocidas como SPA(SINGLE PAGE APLICATION) esto quiere decir que se crearan aplicaiones que contendran unicamente una pagina html pero internamente tendra una serie de componentes que permitira crear aplicaciones robustas. El componente principal de la aplicacion de angular es app-root y normalmente se encuentra dentro de la carpeta app (al crear la aplicacion se agrega de manera automatica). El archivo spec.ts dentro de la carpeta de app es con el que se pueden realizar pruebas.
+
+Un componente en angular se compone de archivos css, ts y html  
+
+Angular contiene un cli (linea de comandos), mediante el podemos crear nuestros proyectos
+Pasos para crear un proyecto mediante CLI:
+1.- Ingresar a la carpeta en donde se creara el proyecto de angular mediante el cmd
+2.- Para comenzar el proyecto se utilizara el comando
+    ng new nombreApp
+*Para el nombre del proyecto no se recomienda utilizar espacios ni caracteres especiales a excepcion de - o _
+3.-Pregunta si se quiere utilizar Angular routing (Y/N)
+/**4.-Preguntara si se quiere utilizar el modo estricto, esto para prevenir futuros errores) ponemos Y(que si)
+5.-Pregunta por el formato de hojas de estilo (CSS, SCSS, Sass y Less)
+6.-Ingresamos a la carpeta que se nos creo (cd nombreApp)
+7.-Para ejecutar nuestra aplicacion web y que se levante un servidor web escribimos
+    ng serve -o
+Esto levanta un live development server en el localhost:4200
+
+/***********************************************************************************************************************+/
+Iniciar y detener servidor de Angular
+1.-Para detener el servidor prescionamos ctrl + shift + c
+2.- Para levantar el servidor
+    ng serve -o
+
+/****************************************************************************************************************************/
+RECUPERAR LA CARPETA NODE_MODULE
+Se ejecuta el comando 
+npm install
+Esto vuelve a agregar la carpeta node_modules, esta carpeta puede ser necesaria para que se trabaje con la palicacion correctamente ya que contiene los modulos de node.
+
+La configuracion que se descarga (node_modules) la toma del archivo package.json ya que en el se encuentran todos los modulos y dependencias que utilizan en el proyecto
+
+/*****************************************************************************************************************************/
+EXTENSIONES PARA VSC (Basicas)
+->Angular Languaje Service
+->Angular Files
+->Angular Support
+->Angular 2 TypeScript Emmet
+->Bootstrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets
