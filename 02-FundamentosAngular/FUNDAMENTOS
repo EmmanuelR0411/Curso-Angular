@@ -1,0 +1,54 @@
+CREAR UN NUEVO COMPONENTE DE FORMA MANUAL
+
+1.-Creamos una nueva carpeta dentro de la carpeta app, esto se realiza para crear(organizar) todos los archivos referentes al nuevo componente que se va a crear
+
+2.-Dentro de la nueva carpeta creamos un nuevo archivo nombreComponente.component.ts
+    ->Primero definimos nuestra clase (esta tiene que ser exportada para esto antes de la clase se antepone la palabra export)
+    ->Al trabajar con Angular para terminar de definir el componente, arriba de la clase debemos utilizar el decorador 
+      de component (@Component)
+    ->Para utilizar el @Component se debe de importar el modulo de core ya que de ahí es de donde proviene este decorador 
+      (import { Component } from "@angular/core";)
+    ->Dentro de @Component({ }) definimos los atributos para terminar de configurar la clase
+    ->Definimos el atributo de selector que es en donde indicaremos el nombre del componente que sera el nombre que utilizaremos
+      para llamarlo en las paginas HTML
+    ->Definimos la propiedad de templateUrl, en el agregaremos la ruta de un archivo en donde se incluira el texto HTML del
+      componente, para esto CREAMOS UN ARCHIVO HTML LLAMADO nombreComponente.component.html(dentro de la isma carpeta que creamos)
+      la ruta sera una ruta relativa por lo que estara agregada así: './nombreComponente.component.html'
+
+3.-Debemos registrar el nuevo componente que se ha creado, para esto entramos al archivo de app.modules.ts y dentro del decorador @NgModules ubicamos la propiedad de declarations y ahí colocamos el nombre de nuestro componente
+    ->Se debe importar el componente (import { NombreComponent } from './ruta del archivo .component.ts';
+
+4.-Para utilizar el nuevo componente lo mandamos a llamar dentro del app.component.html
+
+/*************************************************************************************************************************/
+CREACION DE COMPONENTE DESDE EL CLI
+1.-Abrimos una terminal en VSC (en la carpeta que estamos trabajando con Angular)
+
+2.-Ejecutamos el comando
+   ng generate component nombreComponente
+   Este comando se puede recortar así
+   ng g c nombreComponente
+   Este comando crea una nueva carpeta dentro de app y cuatro archivos, ademas actualiza el archivo app.modules.ts
+
+3.-Si se quieren manejar codigo de manera in line
+   ng g c nombreComponente -s -t
+    con -s le decimos que la hoja de estilos se genere in line y con -t es para la plantilla HTML
+    (In line significa que el codigo se generara dentro del archivo .component.ts esto no es recomendable si el contenido de los archivos HTML o CSS es demasiado pero si es poco se puede hacer
+
+
+/******************************************************************************************************************************/
+INSTALACION DE BOOTSTRAP
+1.-Ejecutar el comando
+    npm install bootstrap --save
+    el --save es para que se guarde el nuevo modulo dentro de la carpeta de node_modules
+
+2.-Se instalan las dependencias necesarias
+    npm install nombre --save
+
+3.-Dentro del archivo angular.json ubicamos el apartado de styles y el de scripts
+    En la parte de styles agregamos "node_modules/bootstrap/dist/css/bootstrap.min.css"
+    En la parte de scripts agregamos
+    "node_modules/popper.js/dist/umd/popper.min.js",
+    "node_modules/bootstrap/dist/js/bootstrap.min.js"
+    (Todo esto es por la version de Bootstrap que se esta utilizando
+    
