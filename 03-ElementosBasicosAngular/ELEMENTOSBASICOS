@@ -1,0 +1,64 @@
+INTERPOLACION
+
+La interpolacion tiene que ver con agregar texto dinamico a las plantillas HTML, para poder hacer esto, se utiliza la doble llave y entre ellas se coloca el nombre de la variable {{nombreVariable}}
+
+Las variables deben de ser declaradas dentro de la clase que se crea en el archivo *.component.ts, una vez declaradas ahi pueden ser utilizadas en los documentos HTML.
+
+En la interpolacion se puede utilizar algo que se conoce como template reference variable (TRV), esto quiere decir que se puede asignar un nombre a algun componente de HTML y posteriormente utilizar el valor que almacena dicho componente. Esto quiere decir que se pueden declarar variables dentro de la plantilla y tomar la informacion de los elementos HTML y mostrarlos directamente con la interpolacion.
+Para esto podemos asignar una variable a un elemento HTML con el #Nombre y mediante la interpolacion mandar a llamar el valor de este (ver documento persona.component.html)
+**Con esto demostramos que la interpolacion no solamnete accede a los atributos de nuestra clase sino que tambien puede acceder a variables que estan asociadas a elementos HTML
+
+
+/*******************************************************************************************************************************/
+
+PROPERTY BINDING
+Property binding es un concepto que nos permite asignar valores a las propiedades de nuestros elementos HTML.
+
+Si en una etiqueta HTML ponemos una de sus propiedades entre corchetes Angular reconoce que esa propiedad sera asociada a un atributo de la clase (ver personas.component.html)
+
+/******************************************************************************************************************************/
+EVENT BINDING}
+
+Event binding nos permite escuchar los eventos de los componentes HTML.
+Para hacer esto, en el elemento HTML en donde se quiere capturar el evento, simplemente agregamos el nombre del evento entre parentesis, con esto le indicamos a Angular que se va a capturar el evento y se le asigna un metodo que debde de estar creado en la clase *.component.ts
+    <div (click) = 'nombreMetodo'>
+
+Practicamente se captura un evemto y cuando este suceda se manda a llamar un metodo, eso es Event Binding
+
+1.-Para capturar los datos ingresados por el usuario podemos utilizar la siguiente sintaxis
+                <input type="text" class="form-control" (input) = 'modificarTitulo($event)'>
+    Los datos son almacenados en la variable llamada event
+
+2.-Luego en el archivo *.component.ts debemos crear el metodo que recuperara los datos y hara lo que deba hacer(dentro de la 
+   clase) para poder hacerlo se utilizara la siguiente sintaxis
+        nombreEvento(event:Event){
+            ...
+            ...(<HTMLInputElement>event.target).value}
+    Para poder ingresar a los datos obtenidos debemos de castearlos primeramente, para eso es la linea de
+    (<HTMLInputElement>event.target).value con esto casteamos los datos y despes podemos hacer lo que se requiera con ellos
+
+/*****************************************************************************************************************************/
+
+TO-WAY BINDING
+
+To way Binding es una forma de entrecomunicar nuestros componentes, de esta forma podemos enviar informacion de nuestra plantilla HTML hacia la clase de Angular y vicebersa
+
+En pocas palabras to-way binding enlaza nuestra plantilla hacia el componente(clase) y nuestro componente(clase) hacia nuestra plantilla (en ambas direcciones).
+To-way Binding es basicamente la aimplementacion de properti binding y event binding.
+
+1.-Primeramente debemos agregar un nuevo modulo al proyecto de Angular, ya que para manejar el concepto de to-way binding debemos   utilizar una propiedad que pertenece a los forms de Angular.
+    Para esto abrimos el archivo de app.modules.ts y en la parte de @NgModules ubicamos la parte de imports y agregamos a 
+    FormsModule
+    La seccion modificada quedara así 
+        imports: [
+        BrowserModule,
+        FormsModule ]
+    De forma automatica se debio de generar el import, de lo contrario se agrega esta linea
+        import { FormsModule } from '@angular/forms';
+
+2.-Ahora en lugar de aplicar el event binding por separado podemos aplicarlo directamente a la propiedad. Para esto utilizamos la
+   siguiente sintaxis
+    <div [(ngModel)] = 'propiedad'>
+    Se utilizan los corchetes como en properti binding y despues los parentesis como en event binding, ngModel es una propiedad
+    del modulo de los formularios que agregamos anteriormente y finalmente, entre comillas le agregamos un valor como una
+     prpiedad que se quiera modificar

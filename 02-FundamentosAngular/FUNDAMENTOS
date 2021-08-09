@@ -50,5 +50,5 @@ INSTALACION DE BOOTSTRAP
     En la parte de scripts agregamos
     "node_modules/popper.js/dist/umd/popper.min.js",
     "node_modules/bootstrap/dist/js/bootstrap.min.js"
-    (Todo esto es por la version de Bootstrap que se esta utilizando
+    (Todo esto es por la version de Bootstrap que se esta utilizando)
     

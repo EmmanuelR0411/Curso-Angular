@@ -1,0 +1,18 @@
+<p>
+    <!-- Aqui usamos la interpolacion para agreagar estos valores de manera dinamica -->
+    Nombre: {{ nombre }}
+    Apellido: {{ apellido }}
+    Edad: {{ edad }}
+</p>
+<!-- Interpolacion con elementos HTML
+Aqui declaramos el evento keyup para que detecte cuando se termina de presionar una tecla, con el 0
+indicamos que no se esperar ningun tiempo, que se procesara de manera inmediata el evento 
+-->
+<div (keyup) = '0'>
+    <label for="repetidor">Repetidor: </label>
+    <!-- Por medio de la interpolacion mostramos lo que se ha capturado en el evento 
+    con el # le asignamos un nombre al input (es como asignar el valor a una variable)-->
+    <input type="text" id="repetidor" #entrada/>
+    <!-- Aqui accedemos a la variable por medio de la interpolacion -->
+    {{ entrada.value }}
+</div>
