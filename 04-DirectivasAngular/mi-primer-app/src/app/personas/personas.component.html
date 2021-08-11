@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            
+            <h1>Listado de Personas</h1>
+            <!-- Si ponemos una propiedad entre coprchetes, Angular reconoce que esa propiedad sera 
+            asociada con un atributo de la clase -->
+            <button class="btn btn-primary" id="btnAgregar" [disabled]=deshabilitar
+            (click) = 'agregarPersona()'>Agregar persona</button>
+            <!-- Utilizamos la directiva ngIf para mostrar nuestro mensaje 
+            Gracias al ngIf, mientras la condicion sea false, el elemento no se arega al DOM
+            es hasta que la condicion es true cuando este se agrega al DOM y se muestra-->
+            <p *ngIf = "mostrar; else sinPersona">{{ mensaje }} con el titulo de {{ titulo }}</p>
+            <!-- else de el ngIf -->
+            <ng-template #sinPersona>
+                <p>No se ha agregado ninguna persona</p>
+            </ng-template>
+            <!-- Agregamos un componente nuevo -->
+            <app-persona></app-persona>
+
+            <!-- Capturando informacion con Event Binding -->
+            <label for="">Titulo Persona: </label>
+            <input type="text" class="form-control" 
+            [(ngModel)] = 'titulo'>
+            <!-- 
+                Con  [(ngModel)] = 'titulo' estamos combinando properti binding y event binding
+                a esto se le llama two-way binding, lo que estamos haciendo es recibir los datos del
+                input y modificarlos directamente en la propiedad de titulo
+                llamamos el valor por medio de interpolacion
+            -->
+            {{ titulo }}
+            <!-- 
+                (input) = 'modificarTitulo($event)'
+            esto se utiliza cuando manejamos event binding
+            por separado 
+            -->
+            
+        </div>
+    </div>
+</div>

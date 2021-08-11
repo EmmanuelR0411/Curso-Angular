@@ -1,0 +1,39 @@
+Una directiva nos permite modificar la información que mostramos en nuestra plantilla
+
+/*******************************************************************************************************************************/
+DIRECTIVA NGIF (Manipular el DOM de manera condicional)
+Nos permite agregar contenido de manera condicional, si la condicion es verdadera se muestra cierto contenido, si la condicion es falsa se oculta ese contenido
+
+La sintaxis para agregar la directiva es la siguiente
+    <div *ngIf="condicion"> Contenido que se agregara cuando la condicion sea verdadera</div>
+
+El *ngIf="condicion" es la manera en poner la directiva y puede ir en cualquier elemento HTML, este se iguala a una variable o una expresion que devuelva un valor booleano.
+
+Podemos agregar un else a el ngIf de la siguiente manera
+
+    <div *ngIf="condicion; else nombreIdentificador"> Contenido que se agregara cuando la condicion sea verdadera</div>
+    <ng-template #nombreIdentificador> Contenido que se agregara cuando la condicion sea falsa</ng-template>
+
+Si la condicion es falsa, se ejecutara la parte de ng-template pero debemos de asociarle un identificador, el cua puede tener cualquier nombre (else nombreIdentificador) pero despues tambien se debe de declarar en el ng-template (#nombreIdentificador)
+
+/*******************************************************************************************************************************/
+NGSWITCH 
+Es una directiva que nos permite tener una expresion con la que comparar y se renderizan todas las vistas que coincidan , si no hay coincidencias se muestra una vista por default (ngSwitchDefault)
+
+Para utilizar un switch se debe de declarar de la siguiente manera
+        <container-element [ngSwitch]="switch_expression">
+            <some-element *ngSwitchCase="match_expression_1">...</some-element>
+                ...
+            <some-element *ngSwitchDefault>...</some-element>
+        </container-element>
+
+Dentro del contenedor se declaran las expresiones de coincidencia como atributos y de la misma forma el caso por default
+
+/******************************************************************************************************************************/
+DIRECTIVA NGFOR
+
+La directiva ngFor nos permite basicamente iterar varios elementos 
+
+        <div *ngFor="let variableNombre of nombreArreglo"></div>
+
+Se declara una variable en donde se guaradara uno a uno los objetos y despues el nombre del arreglo que se va a iterar
