@@ -1,0 +1,38 @@
+<form class="row">
+    <!-- Con col-md-2 indicamos que solo usaremos dos columnas (bootstrap) -->
+    <div class="form-group col-md-2">
+
+      <!-- visually-hidden es una clase de bootstrap que hace que el elemento sea parte del codigo
+      pero que no pueda visualizarse -->
+      <label for="nombre" class="visually-hidden">Nombre: </label>
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-control"
+      #nombreInput/>
+      <!-- Con #nombreVAriable  estamos utilizando local reference para poder pasar informacion
+      a nuestro componente, a diferencia two-way binding aqui solo podemos enviar informacion
+    pero si se cambia en el .ts no afecta a esta plantilla HTML
+    *Al hacer esto no solo pasamos el contenido del elemento HTML (texto) sino que enviamos todo el 
+    *elemento -->
+
+      <!-- Aqui utilizamos two-way binding para recuperar lo que ingrese el usuario, se guardara 
+      en la variable nombreInput [(ngModel)]="apellidoInput"-->
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="apellido" class="visually-hidden">Apellido: </label>
+      <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="form-control"
+      #apellidoInput/>
+    </div>
+
+    <div class="col">
+      <!-- Con event binding configuramos que al darle click mande a lllamar un metodO, como
+      estamos utuilizando una referencia local tenemos que pasarlas como parametros
+      Si usamos ViewChild no necesitamos pasarlos como parametro, ya que los recuperaremos en el
+      component.ts  -->
+      <button type="submit" class="btn btn-primary" 
+      (click)="agregarPersona()">
+        Agregar</button>
+    </div>
+    <p>
+      {{error}}
+    </p>
+  </form>

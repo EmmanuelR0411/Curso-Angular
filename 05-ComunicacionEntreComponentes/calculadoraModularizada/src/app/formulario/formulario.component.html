@@ -1,0 +1,28 @@
+<form action="">
+
+        <div class="form-group">
+                <label for="">Operando A: </label> 
+                <input type="number" class="form-control" placeholder="Escribe operando A" 
+                [(ngModel)]='operandoA' name="operandoA"/> 
+        </div>
+        <hr/>
+
+        <div class="form-group">
+                <label for="">Operando B: </label> 
+                <input type="number" class="form-control" placeholder="Escribe operando A"
+                [(ngModel)]='operandoB' name="operandoB"/> 
+        </div>
+        <hr/>
+        <div class="form-group">
+            
+                <br/>
+                <button type="submit" class="btn btn-primary" (click) = 'metodoSumar()'
+                style="margin: 5px;">Sumar</button>
+                <button type="submit" class="btn btn-primary" (click) = 'metodoRestar()'
+                style="margin: 5px;">Restar</button>
+                <button type="submit" class="btn btn-primary" (click) = 'metodoMultiplicar()'
+                style="margin: 5px;">Multiplicar</button>
+
+        </div>
+
+  </form>

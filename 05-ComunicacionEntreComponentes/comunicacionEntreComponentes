@@ -1,0 +1,29 @@
+COMUNICACION ENTRE COMPONENTES
+
+Para poder establecer la comunicación entre componenetes debemos de utilizar dos directivas, la directiva @Input y la directiva @Output
+
+@Input
+Nos permite recibir información del componente padre hacia un componente hijo
+
+@Output
+Nos permite enviar informacion del componente hijo hacia el componente padre
+
+/*******************************************************************************************************************************/
+
+REFERENCIAS LOCALES
+Con local reference solamente se puede enviar informacion de nuestra plantilla hacia el componente, para esto en un elemento HTML ponemos como atributo #nombreElemento, esto crea una referencia local y al llamarlo en el documento .ts solo debemos de indicar   que tipo de elemento es un <HTMLInputelemetn> etc.
+*Esto envia todo el elemnto HTML, si se quiere acceder a solo el contenido de la etiqueta se usa el .value
+
+
+/*******************************************************************************************************************************/
+VIEWCHILD
+
+Con viewchild podemos recuperar las referencias locales sin necesidad de pasarlas como paramatro dentro de un metodo 
+
+Para esto, dentro del documento component.ts se utiliza el decorador @ViewChild()
+
+        @ViewChild('nombreInput') nombreInput!: ElementRef;
+        ver ejemplo en listado-personas>app>formulario>formulario.component.ts
+
+Y para poder recuperar el valor del elemento ya no se utiliza el .value sino el *.nativeElement.value
+Con nativeElement accedemos al elemento de tipo HTML y con .value accedemos a su valor interno

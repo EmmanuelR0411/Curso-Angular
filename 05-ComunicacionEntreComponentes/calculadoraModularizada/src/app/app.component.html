@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>{{title}}</h1>
+  <hr/>
+  <!-- Utilizamos event binding para monitorear y propagar el evento del hijo al padre -->
+  <app-formulario
+  (operandoAB)="procesarResultado($event)"
+  ></app-formulario>
+  <app-rspuesta
+  [resultadoHijo]="resultadoPadre" 
+  ></app-rspuesta>
+</div>

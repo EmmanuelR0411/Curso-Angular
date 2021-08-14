@@ -1,0 +1,30 @@
+<!-- Agregamos un contenedor -->
+<div class="container">
+  <!-- Agregamos una columna -->
+  <div class="col">
+    <h3>{{ title }}</h3>
+  </div>
+  <hr/>
+  <!-- Agregamos un componente hijo -->
+  <app-formulario 
+  (personaCreada)="personaAgregada($event)"
+  ></app-formulario>
+  {{errorAgregar}}
+  <hr/>
+  <!-- app-perona es un componente hijo ya que se incluye dentro de otro componente -->
+  <!-- Utilizamos la directiva ngFor pra iterar en cada uno de nuestros elementos del arreglo 
+          personas, si queremos mostrar o utilizar el indice de cada elemento se puede agregar
+          ;let i = index
+          A la variable i le asiganmos el index de cada elemento (index es parte de la directiva )
+          y cada que se recorre el indice se incrementa 
+    -->
+  <app-persona
+  *ngFor="let personaElemento of personas; let i = index"
+  [persona]="personaElemento"
+  [indice]="i"
+  >
+  <!-- Por medio de properti biniding lle pasamos informacion al componente hijo
+  el lado derecho corresponde a las varibles que se utilizan en el componente padre y del lado izquierdo
+  son las variables que se definiran en el componente hijo -->
+  </app-persona>
+</div>
