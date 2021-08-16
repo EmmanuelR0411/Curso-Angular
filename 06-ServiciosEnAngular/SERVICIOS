@@ -1,0 +1,61 @@
+Un servicio es basicamente una clase de TypeScript que puede ser utilizada por varios componentes y tambien es como se puede compartir informacion.
+Lo comun es que un servicio regrese informacion que provenga de una fuente de datos, los cuales pueden obtenerse de manera dinamica o estatica 
+
+CREANDO UN SERVICIO
+
+1.-Creamos una nueva clase dentro de app LoggingService.service.ts. Dentro del archivo creamos la clase con la palabra export para que esta pueda ser exportada
+
+2.-En este caso creamos un metodo para imprimir la informacion que se reciba de otras clases ya que queremos centralizar el servicio de loggin (el servicio que envia informacion hacia la consola)
+
+3.-Para poder utilizar este servicio en otras clases debemos de inyectarlo en la clase en que se desea utilizar, estos servicios se inyectan a traves del contructor utilizando el concepto de DEPENDENCY INJECTION (DI).
+En nuestro constructor vamos a recibir una instancia de nuestro servicio
+        En este caso utilizamos
+        constructor(logginService: LoggingService){}
+Declaramos que recibe la variable (instancia) de tipo LoggingService
+
+Angular en automatico crea una instancia de LoggingService y de igual forma de manera automatica la inyecta la instancia de esa clase (lo inyectamos en nuestra clase a traves del constructor)
+
+4.-Dentro del decorador de @Component debemos de agregar nuestro servicio, para esto agregamos el concepto de providers y le indicamos quien sera el proveedor
+          providers: [LoggingService]
+Con esto especificamos que tenremos el proveedor de un servicio. Una vez hecho esto podemos acceder a los metodos de LoggingService dentro de nuestra clase mediante la instancia que crea de forma autoatica angular (el loggingService que se le paso al contructor)
+
+5.-Estos pasos los podemos realizar dentro de todas las clases en las que se quiera utilizar el servicio, esto creara una nueva intancia para cada componente pero si se quiere que se genere una sola instancia apara todos los componentes debemis de definir el servicio dentro del archivo app.modules.ts dentro del decorador de @NgModule y en la seccion de providers
+    ....        
+    providers: [LoggingService],
+    bootstrap: [AppComponent]
+    ....
+
+Y dentro de los demas componentes ya podemos quitarlo de la parte de proveedores, ya que de esta forma la instancia que se crea sera a nivel de app module, esto quiere decir que se compartira con todos los componentes de la aplicacion, si lo definimos a nivel de un componente no se comparte con nadie mas que con los componentes hijos que llegue a tener el componente en donde se definio inicialmente ya que los servicios manejan el concepto de jerarquia 
+
+
+/******************************************************************************************************************************/
+
+INYECTAR UN SERVICIO DENTRO DE UN SERVICIO
+
+Para inyectar un servicio dentro de un servicio se hace lo mismo que se dijo anteriormente pero en el servicio en donde se inyectara el otro servicio se tiene que utilizar el decorador de @Injectable
+
+1.-Primero definimos nuestra variable en el constructor del servicio para que de manera automatica se inyecte una instancia en nuestra clase (DEPENDENCY INJECTION)
+
+2.-Dentro de la clase en la que se va a recibir el servicio se agrega el decorador @Injectable
+
+/******************************************************************************************************************************/
+
+ENVIAR INFORMACION ENTRE COMPONENTES USANDO UN SERVICIO
+
+Para realizar esto debemos de configurar al emisor y al receptor (componentes)
+
+1.-En nuestro servicio creamos un nuevo atributo del tipo eventEmiter
+          saludar = new EventEmitter<number>();
+
+2.-En nuestro emisor agregamos un meto(o en el lugar en donde queremos que se emita la informacion) y mediante el servicio accedemos al atributo que declaramos anteriormente y emitimos lo que deseamos
+           emitirSaludo(){
+                this.personaService.saludar.emit(this.indice);
+             }
+3.-En el receptordebemos suscribirnos a esa evento(emicion) que estamos realizando, recibimos la informacion y hacemos lo que querramos con ella
+        this.personasService.saludar.subscribe(
+                  (indice:number) => alert(`El indice es: ${indice}`)
+                );
+
+**Revisar los archivos  persona.service.ts(servicio), persona.component.ts persona.component.html(EMISOSR) y formulario.component.ts(receptor)
+
+****Para realizar esto previamente se debio de realizar los pasos anteriores en donde vimos como podemos utilizar un servicio dentro de un componente

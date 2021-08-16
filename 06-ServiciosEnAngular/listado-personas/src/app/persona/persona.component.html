@@ -1,0 +1,20 @@
+<!-- Creamos un contenedor -->
+<div class="container">
+    
+    <!-- Agregamos un renglon -->
+    <div class="row">
+      <!-- Agregamos una columna -->
+      <div class="col">
+        <div>
+          <!-- Iteramos cada objeto del arreglo y se imprime uno a uno -->
+          {{indice+1}}.- {{ persona.nombre }} {{ persona.apellido}} 
+          <!-- Con este boton podemos enviar informacion de un componente a otro componente
+          mediante el uso de un servicio -->
+          <button
+          type="submit" class="btn btn-info"
+          (click)="emitirSaludo()"> Editar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
