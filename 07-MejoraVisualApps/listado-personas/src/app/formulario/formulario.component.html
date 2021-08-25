@@ -1,0 +1,26 @@
+<form class="item">
+  <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-control"
+  [(ngModel)]="nombreInput"/> <br/>
+  
+  <!-- Aqui utilizamos two-way binding para recuperar lo que ingrese el usuario, se guardara 
+        en la variable nombreInput [(ngModel)]="apellidoInput"-->
+        <!-- Con #nombreVAriable  estamos utilizando local reference para poder pasar informacion
+          a nuestro componente, a diferencia two-way binding aqui solo podemos enviar informacion
+      pero si se cambia en el .ts no afecta a esta plantilla HTML
+      *Al hacer esto no solo pasamos el contenido del elemento HTML (texto) sino que enviamos todo el 
+      *elemento -->
+
+
+      <input type="text" id="apellido" name="apellido" placeholder="Apellido" class="form-control"
+      [(ngModel)]="apellidoInput"/>
+      
+      <!-- Con event binding configuramos que al darle click mande a lllamar un metodO, como
+        estamos utuilizando una referencia local tenemos que pasarlas como parametros
+        Si usamos ViewChild no necesitamos pasarlos como parametro, ya que los recuperaremos en el
+        component.ts  -->
+        <button type="submit" (click)="agregarPersona()">+</button>
+        
+      </form>
+      <p>
+        {{error}}
+      </p>

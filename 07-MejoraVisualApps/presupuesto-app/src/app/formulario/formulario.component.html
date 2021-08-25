@@ -1,0 +1,42 @@
+<!-- CON NGSUBMIT MONITOREAMOS EL ENVIO DEL FORMULARIO
+Despues, hacemos una referencia local(#f="ngForm") al ngForm que es un objeto de angular,
+al realizar el vento submit se valida el formulario(gracias a la referencia local y ngForm)
+y despues se manda a llamar el metodo (lo que realiza es que cada uno de los inputs
+los maneja como requeridos, de lo contrario esta en un estado de invalido y ya no manda 
+a llamar el metodo de agregarValor, todo esto gracias a manejar la referencia local al 
+formulario ngForm de angular) -->
+<form (ngSubmit)="f.form.valid && agregarValor()" #f="ngForm">
+    <div class="agregar">
+        <div class="agregar_contenedor">
+            <!-- Agregamos y quitamos una clase de manera dinamica, aquí monitoreamos con el 
+                evento change -->
+            <select (change)="tipoOperacion($event)" [ngClass]="{redfocus: tipo === 'egresoOperacion'}"
+                class="agregar_tipo">
+                <option value="ingresoOperacion" selected>+</option>
+                <option value="egresoOperacion">-</option>
+            </select>
+            <!-- Utilizamos two-way binding para asociar los elementos de descripcion y valor
+            y ngClass para agregar un estilo CSS, para esto primero se coloca el nombre de la clase
+            despues dos puntos y una condicion a evaluar, solo si la condicion es verdadera se
+            agrega la clase  -->
+            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}"
+                type="text" 
+                class="agregar_descripcion" 
+                placeholder="Agregar Descripción"
+                name="descripcionInput"
+                [(ngModel)]="descripcionInput"
+                required>
+            <input [ngClass]="{redfocus: tipo === 'egresoOperacion'}"
+                type="number" 
+                class="agregar_valor" 
+                placeholder="Valor"
+                name="valorInput"
+                [(ngModel)]="valorInput"
+                required>
+            <button type="submit" class="agregar_btn" >
+                    <i class="ion-ios-checkmark-outline"
+                       [ngClass]="{red: tipo === 'egresoOperacion'}"></i>
+            </button>
+        </div>
+    </div>
+  </form>

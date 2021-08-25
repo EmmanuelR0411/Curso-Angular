@@ -1,0 +1,19 @@
+Los pipes sirven basicamente para dar formato a la información y que esta se pueda presentar correctamente en la salida del navegador.
+
+Para utilizar pipes se debe de colocar una barra "|" despues de la variable que se utilizao mediante interpolacion y despues el nombdre del pippe que se quiere utilizar, despues el simbolo que se empleara y despues el formato que se empleara, ejemplo:
+
+        {{presupuestoTotal | currency: "MNX": "$": "1.2-2"}}
+        ->currency es un tipo de pippe que maneja un formato de moneda
+        ->MNX es para indicar que se manejaran pesos Méxicanos
+        ->$ es el simbolo que se empleara
+        ->1.2-2 indicamos que manejara al menos dos decimales y maximo dos decimales
+
+
+
+
+
+
+
+Documentacion de pipe con Angular: https://angular.io/guide/pipes
+
+->Pipes comunes: date pipe (dar formato a una cadena, a una fecha), currency pipe, percent (porcentaje) 

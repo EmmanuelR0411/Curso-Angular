@@ -1,0 +1,23 @@
+<!-- Utilizamos property binding para poder pasar los valores de nuestra clase padre a la clase hijo
+en este caso no mandamos una propiedad sino un metodo -->
+<app-cabecero
+[presupuestoTotal]="getPresupuestoTotal()"
+[ingresoTotal]="getIngresoTotal()"
+[egresoTotal]="getEgresoTotal()"
+[porcentajeTotal]="getProcentajeTotal()"
+></app-cabecero>
+
+<app-formulario></app-formulario>
+
+  
+  <div class="contenedor limpiarEstilos">
+      
+    <app-ingreso></app-ingreso>
+      
+    <!-- Enviamos la informacion de getIngresoTotal(que se encuentra en el componente padre)
+    a el componente hijo, a la variable de ingresoTotal -->
+    <app-egreso
+    [ingresoTotal]="getIngresoTotal()"
+    ></app-egreso>
+
+  </div>
